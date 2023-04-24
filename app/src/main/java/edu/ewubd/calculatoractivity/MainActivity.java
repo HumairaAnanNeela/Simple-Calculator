@@ -1,4 +1,4 @@
-package edu.ewubd.calculatoractivity;
+package edu.ewubd.calculatorlayout;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity {
 
+public class MainActivity extends AppCompatActivity {
 
     private TextView tv1, tv2;
     private Button btnDel, btnPoint, btn9, btn8, btn7, btn6, btn5, btn4, btn3, btn2, btn1, btn0, btnDiv, btnMul,
             btnSub, btnAdd, btnEqual, btnView, btnback, btnfront;
+
+   // private Button btnB1,btnB2;
     private double n1, n2;
     private int length;
     private boolean add, sub, mul, div;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> expressions;
     private int currentIndex;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         Button btnback = findViewById(R.id.btnback);
         Button btnfront = findViewById(R.id.btnfront);
 
+//        Button btnB1 = findViewById(R.id.btnB1);
+//        Button btnB2 = findViewById(R.id.btnB2);
+
         //operand buttons
         Button btn0 = findViewById(R.id.btn0);
         Button btn1 = findViewById(R.id.btn1);
@@ -67,11 +73,56 @@ public class MainActivity extends AppCompatActivity {
         //operator buttons
         Button btnAdd = findViewById(R.id.btnAdd);
         Button btnSub = findViewById(R.id.btnSub);
-        Button btnMulti = findViewById(R.id.btnMul);
+        Button btnMul = findViewById(R.id.btnMul);
         Button btnDiv = findViewById(R.id.btnDiv);
         Button btnEqual = findViewById(R.id.btnEqual);
 
         //button
+
+//
+//        btnB1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                String text = tv2.getText().toString();
+////
+////                tv2.setText(text + "(");
+//                String text=tv2.getText().toString();
+//                int length=text.length();
+//                char text1[]=text.toCharArray();
+//                if(length>0) {
+//                    //      plus clicked
+//                    if (checkOperator(text.charAt(length - 1))) {
+//                        text1[length - 1] = '(';
+//                        tv2.setText(String.valueOf(text1));
+//                    } else {
+//                        text = text + "(";
+//                        tv2.setText(text);
+//                    }
+//                }
+//            }
+//        });
+//
+//        btnB2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                String text = tv2.getText().toString();
+////
+////                tv2.setText(text + ")");
+//                String text=tv2.getText().toString();
+//                int length=text.length();
+//                char text1[]=text.toCharArray();
+//                if(length>0) {
+//                    //      plus clicked
+//                    if (checkOperator(text.charAt(length - 1))) {
+//                        text1[length - 1] = ')';
+//                        tv2.setText(String.valueOf(text1));
+//                    } else {
+//                        text = text + ")";
+//                        tv2.setText(text);
+//                    }
+//                }
+//            }
+//        });
 
         btnClr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,8 +230,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = tv2.getText().toString();
-                text = text + ".";
-                tv2.setText(text);
+//                text = text + ".";
+                tv2.setText(text+".");
             }
         });
 
@@ -189,8 +240,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+//                String text=tv2.getText().toString();
+//                tv2.setText(text+"+");
+
                 String text=tv2.getText().toString();
-                tv2.setText(text+"+");
+                int length=text.length();
+                char text1[]=text.toCharArray();
+                if(length>0) {
+                    //      plus clicked
+                    if (checkOperator(text.charAt(length - 1))) {
+                        text1[length - 1] = '+';
+                        tv2.setText(String.valueOf(text1));
+                    } else {
+                        text = text + "+";
+                        tv2.setText(text);
+                    }
+                }
+
+
 
 
             }
@@ -200,8 +267,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+//                String text=tv2.getText().toString();
+//                tv2.setText(text+"*");
                 String text=tv2.getText().toString();
-                tv2.setText(text+"*");
+                int length=text.length();
+                char text1[]=text.toCharArray();
+                if(length>0) {
+                    //      plus clicked
+                    if (checkOperator(text.charAt(length - 1))) {
+                        text1[length - 1] = '*';
+                        tv2.setText(String.valueOf(text1));
+                    } else {
+                        text = text + "*";
+                        tv2.setText(text);
+                    }
+                }
 
             }
         });
@@ -209,16 +289,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+//                String text=tv2.getText().toString();
+//                tv2.setText(text+"/");
                 String text=tv2.getText().toString();
-                tv2.setText(text+"/");
+                int length=text.length();
+                char text1[]=text.toCharArray();
+                if(length>0) {
+                    //      plus clicked
+                    if (checkOperator(text.charAt(length - 1))) {
+                        text1[length - 1] = '/';
+                        tv2.setText(String.valueOf(text1));
+                    } else {
+                        text = text + "/";
+                        tv2.setText(text);
+                    }
+                }
 
             }
         });
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                String text=tv2.getText().toString();
+//                tv2.setText(text+"-");
                 String text=tv2.getText().toString();
-                tv2.setText(text+"-");
+                int length=text.length();
+                char text1[]=text.toCharArray();
+                if(length>0) {
+                    //      plus clicked
+                    if (checkOperator(text.charAt(length - 1))) {
+                        text1[length - 1] = '-';
+                        tv2.setText(String.valueOf(text1));
+                    } else {
+                        text = text + "-";
+                        tv2.setText(text);
+                    }
+                }
 
             }
         });
@@ -298,13 +404,29 @@ public class MainActivity extends AppCompatActivity {
                 }
                 double num = Double.parseDouble(sb.toString());
                 operandStack.push(num);
-            } else if (c == '+' || c == '-' || c == '*' || c == '/') {
-                // Handle operators
-                if (prevChar == '+' || prevChar == '-' || prevChar == '*' || prevChar == '/') {
-                    // Multiple operators in a row, handle as an error
-                    Toast.makeText(getApplicationContext(),"Entered multiple operator in a row!",Toast.LENGTH_SHORT).show();
+            }
 
-                }
+//            else if (c == '+' || c == '-' || c == '*' || c == '/') {
+//                // Handle operators
+//                if (prevChar == '+' || prevChar == '-' || prevChar == '*' || prevChar == '/') {
+//                    // Multiple operators in a row, handle as an error
+//                    Toast.makeText(getApplicationContext(),"Entered multiple operator in a row!",Toast.LENGTH_SHORT).show();
+//
+//                }
+//                //prevChar = c;
+//                while (!operatorStack.isEmpty() && hasPrecedence(c, operatorStack.peek())) {
+//                    char op = operatorStack.pop();
+//                    double b = operandStack.pop();
+//                    double a = operandStack.pop();
+//                    operandStack.push(applyOperator(a, b, op));
+//                }
+//                operatorStack.push(c);
+//            }
+
+            else if (c == '+' || c == '-' || c == '*' || c == '/') {
+
+
+                // Handle operators
                 while (!operatorStack.isEmpty() && hasPrecedence(c, operatorStack.peek())) {
                     char op = operatorStack.pop();
                     double b = operandStack.pop();
@@ -312,7 +434,9 @@ public class MainActivity extends AppCompatActivity {
                     operandStack.push(applyOperator(a, b, op));
                 }
                 operatorStack.push(c);
-            } else if (c == '(') {
+            }
+
+            else if (c == '(') {
 
                 operatorStack.push(c);
             } else if (c == ')') {
@@ -327,7 +451,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Invalid Characters" + c,Toast.LENGTH_SHORT).show();
 
             }
-            prevChar = c;
+
+//            prevChar = c;
         }
 
 // Evaluate any remaining operators and operands
@@ -343,9 +468,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //check whether the digit or operator is the last character
+//    //check whether the digit or operator is the last character
     public boolean checkOperator(char ch) {
-        if (ch == '+' || ch == '-' || ch == 'x' || ch == '÷') {
+        if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch=='(' || ch==')') {
             return true;
         } else {
             return false;
@@ -353,16 +478,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean hasPrecedence(char op1, char op2) {
-        if (op2 == '(' || op2 == ')') {
-            return false;
+//        if (op2 == '(' || op1 == ')') {
+//            return false;
+//        }
+//        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) {
+//            return false;
+//        }
+//        if(op2=='(' && op1==')'){
+//            return true;
+//        }
+
+        if ((op2 == '*' || op2 == '/') && (op1 == '+' || op1 == '-')) {
+            return true;
         }
-        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
-    private static double applyOperator(double a, double b, char op) {
+    private double applyOperator(double a, double b, char op) throws ArithmeticException  {
         switch (op) {
             case '+':
                 return a + b;
@@ -371,8 +503,13 @@ public class MainActivity extends AppCompatActivity {
             case '*':
                 return a * b;
             case '/':
-                if (b == 0) {
-                    throw new ArithmeticException("Division by zero");
+                try{
+                    if(b == 0){
+                        Toast.makeText(this,"Can not divide by zero",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                catch (ArithmeticException e){
+                    e.printStackTrace();
                 }
                 return a / b;
         }
@@ -420,8 +557,11 @@ public class MainActivity extends AppCompatActivity {
     private List<String> loadExpressions() {
         int count = sp.getInt("count", 0);
         List<String> expressions = new ArrayList<>();
+       // List<String> result = new ArrayList<>();
+
         for (int i = count - 1; i >= 0; i--) {
             String expression = sp.getString("expression_" + i, "");
+
             if (!expression.isEmpty()) {
                 expressions.add(expression);
             }
@@ -429,4 +569,6 @@ public class MainActivity extends AppCompatActivity {
         return expressions;
     }
 
+
+//////
 }
